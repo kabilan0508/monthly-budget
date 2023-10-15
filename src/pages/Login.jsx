@@ -1,11 +1,16 @@
 import React from "react";
 import classes from "./Login.module.css";
-import { Outlet, Link } from "react-router-dom";
+import { Outlet, Link, useNavigate } from "react-router-dom";
 
 const Login = () => {
+  const navigate = useNavigate();
   const onLogin = (e) => {
     e.preventDefault();
     console.log("onLogin");
+
+    navigate("/about");
+    // const history = useHistory();
+    // history.push("/courses");
   };
   return (
     <section className={classes.loginsection}>
