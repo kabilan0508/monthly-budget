@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import classes from "./Login.module.css";
 import Card from "../UI/Card";
+import { auth } from "../firebase/firebase";
+import { signInWithEmailAndPassword } from "firebase/auth";
 
 const Login = () => {
   const [isSignup, setisSignup] = useState(false);
@@ -19,9 +21,23 @@ const Login = () => {
     setpassword(e.target.value);
   };
 
-  const loginHandler = (e) => {
+  const loginHandler = async (e) => {
     e.preventDefault();
-    if (isSignup) {
+    if (!isSignup) {
+      await signInWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+          // Signed in
+          const user = userCredential.user;
+          console.log(user);
+          // navigate("/5");
+          // ...
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          console.log(errorCode, errorMessage);
+          // ..
+        });
     }
   };
 
