@@ -1,55 +1,54 @@
 .loginsection {
-  width: 100vw;
-  /* background-color: red; */
-  height: 100vh;
-  margin: auto;
-  /* text-align: center; */
+  height: calc(100vh - 80px - 80px);
   display: flex;
+  min-height: 400px;
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
-  align-items: center;
+  /* background-color: #ddd; */
+  transition: all 0.3s ease;
 }
-/* @media only screen and (max-width: 600px) {
-  .loginsection {
-    padding: 30px;
-    background-color: red;
-    height: 100vh;
-  }
-} */
-.loginheading {
-  text-align: left;
-  /* align-self: flex-start; */
+
+.loginsection p {
+  /* background-color: #ccc; */
+  /* color: blue; */
+  margin-top: 10px;
 }
-.logincard {
-  background-color: pink;
-  /* width: 300px; */
-  /* height: 300px; */
+.formdesign {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 30px;
-  padding: 40px 10px 60px 10px;
-  border-radius: 30px;
-  /* justify-content: space-around; */
-}
-.logininput {
-  width: 300px;
-  padding: 10px 5px;
-  font-size: 20px;
-  border-radius: 10px;
-  border: none !important;
-}
-.loginbutton {
-  width: 300px;
-  /* height: 30px; */
+  gap: 5px;
   padding: 10px 0;
-  border: none;
-  border-radius: 10px;
-  background-color: blue;
-  color: white;
+  position: relative;
 }
-.logincard form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 20px;
+.formdesign input {
+  font-size: 15px;
+  margin-top: 15px;
+  padding: 7px 10px;
+  position: relative;
+}
+.formdesign a {
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+.passwordshow {
+  position: absolute;
+  /* background-color: blue; */
+  color: blue;
+  right: 10px;
+  top: 85px;
+  cursor: pointer;
+}
+.formdesign button {
+  padding: 10px;
+  margin-top: 10px;
+  background-color: #000;
+  border: none;
+  color: #fff;
+  font-weight: 600;
+  border-radius: 30px;
+}
+.changebutton {
+  cursor: pointer;
+  color: blue;
 }

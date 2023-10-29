@@ -1,46 +1,78 @@
-import React from "react";
+import React, { useState } from "react";
 import classes from "./Login.module.css";
-import { Outlet, Link, useNavigate } from "react-router-dom";
+import Card from "../UI/Card";
 
 const Login = () => {
-  const navigate = useNavigate();
-  const onLogin = (e) => {
-    e.preventDefault();
-    console.log("onLogin");
+  const [isSignup, setisSignup] = useState(false);
+  const [isPasswordshow, setisPasswordshow] = useState(false);
 
-    navigate("/about");
-    // const history = useHistory();
-    // history.push("/courses");
+  const [email, setemail] = useState("");
+  const [password, setpassword] = useState("");
+  const registerHandler = () => {
+    setisSignup(!isSignup);
   };
+
+  const emailHandler = (e) => {
+    setemail(e.target.value);
+  };
+  const passwordHandler = (e) => {
+    setpassword(e.target.value);
+  };
+
+  const loginHandler = (e) => {
+    e.preventDefault();
+    if (isSignup) {
+    }
+  };
+
   return (
-    <section className={classes.loginsection}>
-      <div className={classes.logincard}>
-        <div className={classes.loginheading}>
-          <h2>LOGIN</h2>
-        </div>
-        <form onSubmit={onLogin}>
-          <div>
-            <input
-              type="text"
-              className={classes.logininput}
-              placeholder="Email"
-            ></input>
-          </div>
-          <div>
-            <input
-              type="password"
-              className={classes.logininput}
-              placeholder="Password"
-            ></input>
-          </div>
-          <div>
-            <button type="submit" className={classes.loginbutton}>
-              Login
-            </button>
-          </div>
+    <div className={classes.loginsection}>
+      {/* <Developing /> */}
+      <Card className={classes.carddesign}>
+        <h2>{!isSignup ? `Log in` : `Sign up`}</h2>
+        <form className={classes.formdesign} onSubmit={loginHandler}>
+          <input
+            type="email"
+            placeholder="Email"
+            onChange={emailHandler}
+            value={email}
+          />
+          <input
+            type={isPasswordshow ? `text` : `password`}
+            placeholder="Password"
+            onChange={passwordHandler}
+            value={password}
+          />
+          {isSignup && <input type="password" placeholder="Confirm Password" />}
+          {!isSignup && (
+            <div
+              className={classes.passwordshow}
+              onClick={() => setisPasswordshow(!isPasswordshow)}
+            >
+              {isPasswordshow ? `hide` : `show`}
+            </div>
+          )}
+          {!isSignup && <a href="#">Forget Password</a>}
+          <button type="submit">{!isSignup ? `Log in` : `Sign up`}</button>
         </form>
-      </div>
-    </section>
+      </Card>
+      {!isSignup && (
+        <p>
+          New User.{" "}
+          <a onClick={registerHandler} className={classes.changebutton}>
+            Register here
+          </a>
+        </p>
+      )}
+      {isSignup && (
+        <p>
+          Already User.{" "}
+          <a onClick={registerHandler} className={classes.changebutton}>
+            Login here
+          </a>
+        </p>
+      )}
+    </div>
   );
 };
 
